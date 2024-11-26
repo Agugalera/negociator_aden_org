@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8089:80"
+    restart: unless-stopped
+    container_name: negociator_aden_org
+    depends_on:
+      - db
+  db:
+    image: "mysql:lts"
+    environment:
+      MYSQL_ROOT_PASSWORD: H0m3r0**
+      MYSQL_DATABASE: ADENIBS_negociator
+      MYSQL_USER: negociatoruser
+      MYSQL_PASSWORD: H0m3r0**
+    restart: always
+    container_name: negociator_aden_org_db
